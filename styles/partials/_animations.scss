@@ -1,0 +1,25 @@
+.loader-svg path {
+  fill: transparent;
+
+  stroke: $white-dark;
+
+  animation: logo-hollow 12s ease infinite alternate;
+}
+
+@keyframes logo-hollow {
+  0% {
+    stroke-width: 0;
+    stroke-dasharray: 1, 100;
+    fill: transparent;
+  }
+  20% {
+    stroke-width: 1;
+    fill: transparent;
+    stroke-dasharray: 100 0;
+  }
+  60%,
+  100% {
+    stroke-width: 0.3;
+    fill: $white-dark;
+  }
+}

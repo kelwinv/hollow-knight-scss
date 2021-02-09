@@ -1,0 +1,240 @@
+@mixin responsive() {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  max-width: 90vw;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+
+  @include responsive() {
+    max-width: 1416px;
+    max-height: 713px;
+  }
+}
+
+.item1 {
+  width: 100%;
+  margin: 74px auto 0;
+  justify-self: center;
+
+  @include responsive() {
+    margin: 130px 0;
+    max-width: 639px;
+    max-height: 599px;
+  }
+}
+
+.about {
+  display: grid;
+  gap: 20px;
+  @include responsive() {
+    width: 576px;
+
+    p {
+      width: 576px;
+      height: 162px;
+      font-size: 18px;
+    }
+  }
+}
+
+.about svg {
+  width: 220px;
+  height: 80px;
+  margin: auto;
+
+  @include responsive() {
+    width: 576px;
+    height: 212px;
+    margin: auto;
+  }
+}
+
+.buttons {
+  display: grid;
+  gap: 30px;
+  margin-top: 40px;
+
+  @include responsive() {
+    display: flex;
+    justify-content: space-between;
+    width: 576px;
+    gap: 30px;
+    margin-top: 30px;
+  }
+}
+
+.buttons .bt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 226px;
+  height: 56px;
+
+  margin: auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  @include responsive() {
+    margin: initial;
+
+    > svg {
+      opacity: 0;
+      transition: 0.2s;
+    }
+
+    &:hover .bt-content {
+      background: linear-gradient(180deg, #0a1426 0%, rgba(20, 24, 31, 0) 100%);
+      border-radius: 7px;
+
+      transition: background 2s ease-out;
+    }
+
+    &:hover > svg {
+      opacity: 1;
+      width: 15%;
+    }
+  }
+}
+
+.buttons .bt .bt-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+
+  width: 170px;
+  height: 50px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) -0.16%,
+    rgba(255, 255, 255, 0.07) 32.76%,
+    rgba(255, 255, 255, 0.2) 74.56%,
+    rgba(255, 255, 255, 0.01) 100.16%
+  );
+
+  transition: 2s;
+}
+
+.buttons .bt .bt-content p {
+  color: $white;
+
+  height: 14px;
+  margin: auto;
+}
+
+.buttons .bt .bt-content svg {
+  position: absolute;
+  width: 170px;
+  height: 43px;
+  top: -4px;
+}
+
+.stores {
+  display: grid;
+  max-width: 226px;
+  grid-template-rows: 30px 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    ". . right"
+    ". . right";
+
+  margin: 40px auto 0;
+
+  & img:nth-child(3) {
+    grid-area: right;
+    height: 100%;
+  }
+
+  @include responsive() {
+    margin: 20px 0 0;
+  }
+}
+
+.produtora {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20px 20px 0;
+
+  @include responsive() {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+.item2 {
+  position: absolute;
+  left: 100vw;
+
+  @include responsive() {
+    position: initial;
+    box-sizing: initial;
+    > img {
+      position: absolute;
+      width: 855px;
+      height: 840px;
+      transform: translate3d(-192px, 53px, 0);
+      pointer-events: none;
+    }
+  }
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+      107.56deg,
+      #070d19 0%,
+      rgba(7, 13, 25, 0.81) 16.15%,
+      rgba(7, 13, 25, 0.542) 43.23%,
+      rgba(7, 13, 25, 0.83) 68.75%,
+      #070d19 100%
+    );
+  }
+}
+
+.bg-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(109.62deg, #1e2f4d 0%, #070d19 100%);
+
+  z-index: 2;
+
+  overflow: hidden;
+}
